@@ -1,5 +1,15 @@
 [
 	{
+		"url": "/files/lofi-room/index.html",
+		"imageSrc": "/files/lofi-room/splash.png",
+		"name": "Lofi Room"
+	},
+	{
+		"url": "/files/keylimba/index.html",
+		"imageSrc": "/files/keylimba/splash.webp",
+		"name": "Keylimba"
+	},
+	{
 		"url": "/files/monkeymart/file/index.html",
 		"imageSrc": "/files/monkeymart/file/bg_loading.png",
 		"name": "Monkey Mart"
