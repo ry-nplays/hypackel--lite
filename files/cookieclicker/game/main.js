@@ -1928,7 +1928,7 @@ Game.Launch=function()
 		l('offGameMessage').innerHTML=
 		'<div class="title">Oops. Wrong address!</div>'+
 		'<div>this is a bug in the game.<br>'+
-		'You can <a href="./index.html" >Just click this link</a>!<br>'+
+		'You can <a target="_blank" href="./index.html" >Just click this link</a>!<br>'+
 		'<small>Thanks for using Hypackel!</small></div>';
 		// window.location.href= "./index.html"
 	}
