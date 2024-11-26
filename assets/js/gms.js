@@ -337,51 +337,11 @@ document.addEventListener("DOMContentLoaded", () => {
 										(game) => game.name === firstItem,
 									);
 									if (matchedGame) {
-										// console.log('Matching game:', matchedGame);
-										// console.log("Image Source:", matchedGame.imageSrc);
-										// Select the .full-image-container element
 										const imageContainer = document.querySelector(
 											".full-image-container",
 										);
 
 										imageContainer.style.backgroundImage = `url('${matchedGame.imageSrc}')`;
-
-										if (
-											localStorage.getItem("likesscreen") == null ||
-											localStorage.getItem("likesscreen") == "true"
-										) {
-											document.getElementById(
-												"particles-js",
-											).style.backgroundImage = `url(${matchedGame.imageSrc})`;
-											if (localStorage.getItem("likesscreen") == "true") {
-												// .style.backgroundColor = "rgba(0,0,0,0.8)";
-											}
-										} else {
-											var script = document.createElement("script");
-											script.type = "text/javascript";
-											script.src = "/assets/js/selectwithoutselect.js";
-											document.head.appendChild(script);
-										}
-										var overlay = document.getElementById("particles-js");
-										overlay.style.backgroundSize = "cover";
-										overlay.style.backgroundPosition = "center";
-
-										// Create and apply styles for overlay using pseudo-element ::before
-										var overlayStyle = document.createElement("style");
-										overlayStyle.innerHTML = `
-                        #particles-js::before {
-                            content: "";
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            background: linear-gradient(to bottom, rgba(28, 28, 28, 0), #171717);
-                            z-index: 0; /* Ensure overlay is below content */
-                        }
-                    `;
-
-										document.head.appendChild(overlayStyle);
 									} else {
 										console.log("No matching game found.");
 									}
