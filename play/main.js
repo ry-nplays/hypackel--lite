@@ -21,21 +21,37 @@ document.addEventListener("DOMContentLoaded", () => {
 			.then((response) => response.json())
 			.then((data) => {
 				const matchingGame = data.find(
-					(game) => game.name.toLowerCase() === query
+					(game) => game.name.toLowerCase() === query,
 				);
 
 				if (matchingGame) {
 					gameTitleElement.textContent = matchingGame.name;
-					document.getElementById("FullscreenGlitchUrl").href = matchingGame.url;
-					document.getElementById("contentBackground").src = matchingGame.imageSrc;
+					document.getElementById("FullscreenGlitchUrl").href =
+						matchingGame.url;
+					document.getElementById("contentBackground").src =
+						matchingGame.imageSrc;
+
+					// Check if OnOtherServer is true
+					let gameUrl = matchingGame.url;
+
+					if (matchingGame.OnOtherServer === true) {
+						const cloudflareUrl = "https://hypackelcloudflare.pages.dev";
+						gameUrl = `${cloudflareUrl}${gameUrl}`;
+						document.getElementById("FullscreenGlitchUrl").style.display =
+							"none";
+						document.getElementById("FullscreenGlitchText").style.display =
+							"none";
+						document.getElementById("contentBackground").src =
+							cloudflareUrl + matchingGame.imageSrc;
+					}
 
 					// Check if showbar is explicitly set to false
 					if (matchingGame.showbar === false) {
 						// Redirect directly to the game's URL if showbar is false
-						window.location.href = matchingGame.url;
+						window.location.href = gameUrl;
 					} else {
 						// Proceed with iframe loading if showbar is true or undefined
-						const originalUrl = matchingGame.url;
+						const originalUrl = gameUrl;
 						const replacedUrl = originalUrl.includes("index.html")
 							? originalUrl.replace("index.html", "")
 							: originalUrl;
@@ -66,37 +82,40 @@ document.addEventListener("DOMContentLoaded", () => {
 									loadingIframe.style.display = "none"; // Hide loading iframe
 								}
 
-								document.getElementById("fullscreen-btn").addEventListener("click", () => {
-									const gameContainer = document.getElementById("game-player");
-									
-									if (!document.fullscreenElement) {
-										// Enter fullscreen
-										if (gameContainer.requestFullscreen) {
-											gameContainer.requestFullscreen();
-										} else if (gameContainer.webkitRequestFullscreen) {
-											gameContainer.webkitRequestFullscreen();
-										} else if (gameContainer.msRequestFullscreen) {
-											gameContainer.msRequestFullscreen();
-										} else if (gameContainer.mozRequestFullScreen) {
-											gameContainer.mozRequestFullScreen();
+								document
+									.getElementById("fullscreen-btn")
+									.addEventListener("click", () => {
+										const gameContainer =
+											document.getElementById("game-player");
+
+										if (!document.fullscreenElement) {
+											// Enter fullscreen
+											if (gameContainer.requestFullscreen) {
+												gameContainer.requestFullscreen();
+											} else if (gameContainer.webkitRequestFullscreen) {
+												gameContainer.webkitRequestFullscreen();
+											} else if (gameContainer.msRequestFullscreen) {
+												gameContainer.msRequestFullscreen();
+											} else if (gameContainer.mozRequestFullScreen) {
+												gameContainer.mozRequestFullScreen();
+											}
+										} else {
+											// Exit fullscreen
+											if (document.exitFullscreen) {
+												document.exitFullscreen();
+											} else if (document.webkitExitFullscreen) {
+												document.webkitExitFullscreen();
+											} else if (document.msExitFullscreen) {
+												document.msExitFullscreen();
+											} else if (document.mozCancelFullScreen) {
+												document.mozCancelFullScreen();
+											}
 										}
-									} else {
-										// Exit fullscreen
-										if (document.exitFullscreen) {
-											document.exitFullscreen();
-										} else if (document.webkitExitFullscreen) {
-											document.webkitExitFullscreen();
-										} else if (document.msExitFullscreen) {
-											document.msExitFullscreen();
-										} else if (document.mozCancelFullScreen) {
-											document.mozCancelFullScreen();
-										}
-									}
-								});
-			
+									});
+
 								function open_fullscreen() {
 									const gameContainer = document.getElementById("game-player");
-									
+
 									if (!document.fullscreenElement) {
 										// Enter fullscreen
 										if (gameContainer.requestFullscreen) {

@@ -1,5 +1,10 @@
 [
-
+    {
+		"url": "/files/worldgussr/index.html",
+		"imageSrc": "/files/worldgussr/street1.jpg",
+		"name": "WorldGuessr",
+        "OnOtherServer": true
+	},
     {
         "url": "/files/load/slope2/",
         "imageSrc": "/files/load/slope2/splash.png",
