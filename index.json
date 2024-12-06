@@ -2,7 +2,7 @@
 	{
 		"name": "Geometry Dash",
 		"imageSrc": "/files/geodash/splash.webp",
-		"url": "/files/geodash1/index.html",
+		"url": "/files/geodash/index.html",
 		"OnOtherServer": true
 	},
 	{
