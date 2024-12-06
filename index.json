@@ -1,4 +1,15 @@
 [
+	{
+		"url": "/files/spacewaves/index.html",
+		"imageSrc": "/files/spacewaves/splash.avif",
+		"name": "Space Waves",
+        "OnOtherServer": true
+	}, 
+	{
+		"url": "/files/foodstars/index.html",
+		"imageSrc": "/files/foodstars/splash.png",
+		"name": "Food Stars.io"
+	}, 
     {
 		"url": "/files/territorialio/build/index.html",
 		"imageSrc": "/files/territorialio/splash.webp",
