@@ -1,5 +1,11 @@
 [
 	{
+		"name": "Geometry Dash",
+		"imageSrc": "/files/geodash/splash.webp",
+		"url": "/files/geodash1/index.html",
+		"OnOtherServer": true
+	},
+	{
 		"url": "/files/spacewaves/index.html",
 		"imageSrc": "/files/spacewaves/splash.avif",
 		"name": "Space Waves",
