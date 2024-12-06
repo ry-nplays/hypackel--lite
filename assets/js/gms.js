@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		// Check if OnOtherServer is true
 		let imageUrl = game.imageSrc;
 
-		if (game.OnOtherServer === true) {
+		if (game.OnOtherServer) {
 			const cloudflareUrl =
 				"https://hypackelcloudflare.pages.dev";
 				imageUrl = `${cloudflareUrl}${imageUrl}`;

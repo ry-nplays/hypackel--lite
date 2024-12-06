@@ -14,7 +14,8 @@
 	{
 		"url": "/files/foodstars/index.html",
 		"imageSrc": "/files/foodstars/splash.png",
-		"name": "Food Stars.io"
+		"name": "Food Stars.io",
+		"OnOtherServer": true
 	}, 
     {
 		"url": "/files/territorialio/build/index.html",
