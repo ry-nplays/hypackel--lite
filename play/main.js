@@ -203,4 +203,41 @@ document.addEventListener("DOMContentLoaded", () => {
 				gameTitleElement.textContent = "Error fetching game data";
 			});
 	}
+
+
+
+
+	// Random Games:
+	fetch('/index.json')
+  .then(response => response.json())
+  .then(data => {
+    const randomGamesContainer = document.querySelector('#random-games');
+
+    // Pick 4 random games
+    const shuffled = data.sort(() => 0.5 - Math.random());
+    const selectedGames = shuffled.slice(0, 4);
+
+    // Generate HTML for each game
+    for (const game of selectedGames) {
+      const imageSrc = game.OnOtherServer 
+        ? `https://hypackelcloudflare.pages.dev/${game.imageSrc}` 
+        : game.imageSrc;
+
+      const gameCard = document.createElement('div');
+      gameCard.classList.add('randcard');
+      gameCard.innerHTML = `
+        <img src="${imageSrc}" class="card-img-top img-fluid" alt="${game.name}" style="height: 120px; object-fit: cover;">
+        <div class="card-body">
+          <h6 class="card-title">${game.name}</h6>
+        </div>
+      `;
+      gameCard.addEventListener('click', () => {
+        window.location.href = `/play/index.html?${game.name}`;
+      });
+      randomGamesContainer.appendChild(gameCard);
+    }
+  })
+  .catch(error => console.error('Error loading games:', error));
+
+  
 });

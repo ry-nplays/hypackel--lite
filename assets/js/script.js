@@ -282,6 +282,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		// Insert the script at the beginning of the head
 		document.head.prepend(adsScript);
+	} else{
+		console.log("scrit injection failed");
 	}
 });
 
